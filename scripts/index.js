@@ -1,10 +1,10 @@
 import createCard from './card.js'
 
-const boardData = {}
+let boardData = [];
 const defaultCardData = {
     value:null,
     revealed:false
-}
+};
 
 const createGameBoard = (count = 16) => {
     const board = document.getElementById('game-board');
@@ -12,11 +12,10 @@ const createGameBoard = (count = 16) => {
     // create card elements to fill the game board and register them in the board data object
     for (let i = 0; i < count; i++){
         board.appendChild(createCard(i));
-        boardData[i] = {
-            value:null,
-            revealed:false
-        };
     }
+
+    boardData = new Array(count).fill(defaultCardData);
+
 
     // randomize the values of the cards in the board data object using a temp arrays to avoid unecessary checks
 
