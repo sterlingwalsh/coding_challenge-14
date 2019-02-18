@@ -6,31 +6,32 @@
     <title>RoboFind</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/card.css" />
 </head>
-<body>
+<body class='flex-c'>
     <header>
         <h1>RoboFind</h1>
     </header>
-    <nav>
-        <div class='signin-link'>Sign In</div>
-        <div class='signout-link'>Sign Out</div>
-        <div class='register-link'>Register</div>
+    <nav class='flex-r'>
+        <a href='' class='signin-link'>Sign In</a>
+        <a href='' class='signout-link'>Sign Out</a>
+        <a href='' class='register-link'>Register</a>
     </nav>
-    <div class='control-panel'>
+    <div class='control-panel flex-r stretch'>
         <div class='moves-counter'>
             <div>Moves</div>
-            <div>0</div>
+            <div id='move-count'>0</div>
         </div>
         <div>
-            <button class='start-button'>Start</button>
-            <button class='reset-button'>Reset</button>
+            <button id='start-button'>Start</button>
+            <button id='reset-button'>Reset</button>
         </div>
         <div class='timer'>
             <div>Time</div>
-            <div>00:00:000</div>
+            <div id='clock'>00:00.000</div>
         </div>
     </div>
-    <div class='main-container'>
+    <div class='flex-r main-container test-border'>
         <div class='leaderboard'>
             <div class='leaders-fastest'>
             
@@ -39,7 +40,7 @@
 
             </div>
         </div>
-        <div id='game-board' class='game-board'>
+        <div id='game-board' class='game-board gb-4x4 test-border'>
             
         </div>
     </div>

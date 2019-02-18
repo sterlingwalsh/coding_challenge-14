@@ -1,0 +1,37 @@
+.card{
+    border:1px solid black;
+    position: relative;
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+    border-radius: 1rem;
+}
+
+.show-back{
+    transform: rotateY(180deg);
+}
+
+.card-side{
+    transition: opacity 0s linear .5s; 
+}
+
+.card-back{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card-front{
+    font-size: 10vh;
+}
+
+.card .card-back{
+    opacity: 0;
+}
+
+.card.show-back .card-back{
+    opacity: 1;
+}
+
+.card.show-back .card-front{
+    opacity: 0;
+}
