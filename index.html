@@ -22,29 +22,31 @@
     </nav>
     <div class='control-panel flex-r stretch'>
         <div>
-            <i id='reset-button' class="material-icons refresh-icon">
+            <i id='refresh-icon' class="material-icons refresh-icon">
                 refresh
             </i>
         </div>
     </div>
     <div class='flex-r main-container'>
-        <div id='leaderboard' class='grow-1 flex-c col-right test-border'>
-            <div class='leaders-fastest'>
-                fastest
+        <div id='leaderboard' class='grow-1 flex-c col-cntr b-out pd-1'>
+            <h2>Leaderboard</h2>
+            <div class='leaders-fastest b-in mg-1'>
+                Fastest
             </div>
-            <div class='leaders-moves'>
-                move count
+            <div class='leaders-moves b-in mg-1'>
+                Moves
             </div>
         </div>
-        <div id='game-board' class='game-board gb-4x4 grow-0'>
+        <div id='game-board' class='game-board gb-4x4 grow-0 b-out'>
             
         </div>
-        <div id='current-stats' class='grow-1 test-border'>
-            <div class='timer'>
+        <div id='current-stats' class='grow-1 flex-c col-cntr b-out pd-1'>
+            <h2>Game Stats</h2>
+            <div class='timer b-in mg-1'>
                 <div>Time</div>
                 <div id='clock'>00:00.000</div>
             </div>
-            <div class='moves-counter'>
+            <div class='moves-counter b-in mg-1'>
                 <div>Moves</div>
                 <div id='move-count'>0</div>
             </div>

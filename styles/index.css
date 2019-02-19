@@ -1,10 +1,34 @@
 @font-face{
-    font-family: Electro;
-    src: url('../resources/Electro\ Shackle.otf');
+    font-family: hightech;
+    src: url('../resources/Delogs\ Goes\ Hi-Tech.otf');
+}
+
+*{
+    font-family: hightech;
 }
 
 .test-border{
     border: 1px solid red;
+}
+
+.b-out{
+    border: 3px outset lightgray;
+}
+
+.b-in{
+    border:3px inset lightgray;
+}
+
+.col-left{
+    align-items: flex-start;
+}
+
+.col-right{
+    align-items: flex-end;   
+}
+
+.col-cntr{
+    align-items: center;
 }
 
 .flex-r{
@@ -35,12 +59,12 @@
     pointer-events: none;
 }
 
-.col-left{
-    align-items: flex-start;
+.pd-1{
+    padding:.5rem;
 }
 
-.col-right{
-    align-items: flex-end;   
+.mg-1{
+    margin:.5rem;
 }
 
 .match-parent{
@@ -76,7 +100,6 @@ body{
 
 h1{
     text-align: center;
-    font-family: Electro;
     letter-spacing: 4px;
     font-size: 3rem;
     margin: 1rem;
@@ -109,6 +132,11 @@ nav a{
 
 .refresh-icon:active{
     color: blue;
+}
+
+.refresh-icon-spin{
+    transition: 1s all ease-in-out;
+    transform: rotate(360deg);
 }
 
 .main-container{

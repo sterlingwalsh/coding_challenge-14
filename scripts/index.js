@@ -99,8 +99,13 @@ const formatDate = (date) => {
             `.${date.getMilliseconds().toString().padStart(3,0)}`);
 }
 
-document.getElementById('reset-button').addEventListener('click', () => {
+document.getElementById('refresh-icon').addEventListener('click', (evt) => {
+    evt.target.classList.add('refresh-icon-spin')
     setupGame();
+});
+
+document.getElementById('refresh-icon').addEventListener('transitionend', (evt) => {
+    evt.target.classList.remove('refresh-icon-spin')
 });
 
 setupGame();
