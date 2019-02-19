@@ -14,11 +14,20 @@ const setupGame = () => {
 
 // handle game board interactions and update stats
 document.getElementById('game-board').addEventListener('click', (evt) => {
-    if(!GC.started) return;
-    if(!evt.target.classList.contains('card')) return;
-    if(evt.target === GC.firstPick)return;
-    
     const pick = evt.target;
+    // if click is between cards or otherwise just not one of the cards, ignore it
+    if(!pick.classList.contains('card')) return;
+    // if the same card is clicked twice, ignore it
+    if(evt.target === GC.firstPick)return;
+
+    // if the game has not yet started, attempt to begin a new game (will also start the timer)
+    if(!GC.started){
+        if(!startGame()){
+            alert("error setting up game");
+            return null;
+        }
+    }
+
     flipCardToBack(pick);
    
     // send selected card to game constroller and check response
@@ -50,21 +59,15 @@ const flipCardToBack = (card) => {
     card.classList.add('show-back');
 }
 
-document.getElementById('start-button').addEventListener('click', () => {
-    let seconds = 3;
-    const startButton = document.getElementById('start-button');
-    startButton.textContent = seconds;
-    const countdown = setInterval(() => {
-        startButton.textContent = --seconds;
-        if(!seconds){
-            if(GC.start()){
-                startTimer();
-                startButton.textContent = 'GO!!!';
-            }
-            clearInterval(countdown);
-        }
-    }, 1000);
-});
+const startGame = () => {
+
+    if(GC.start()){
+        startTimer();
+        return true;
+    }else{
+        return false;
+    }
+}
 
 // clock controls
 const clock = document.getElementById('clock');
