@@ -3,14 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RoboFind</title>
+    <title>MatchBots</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/card.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
 </head>
 <body class='flex-c'>
     <header>
-        <h1>RoboFind</h1>
+        <h1>MatchBots</h1>
     </header>
     <nav class='flex-r'>
         <a href='' class='signin-link'>Sign In</a>
@@ -18,30 +21,33 @@
         <a href='' class='register-link'>Register</a>
     </nav>
     <div class='control-panel flex-r stretch'>
-        <div class='moves-counter'>
-            <div>Moves</div>
-            <div id='move-count'>0</div>
-        </div>
         <div>
-            <button id='start-button'>Start</button>
-            <button id='reset-button'>Reset</button>
-        </div>
-        <div class='timer'>
-            <div>Time</div>
-            <div id='clock'>00:00.000</div>
+            <i id='reset-button' class="material-icons refresh-icon">
+                refresh
+            </i>
         </div>
     </div>
-    <div class='flex-r main-container test-border'>
-        <div class='leaderboard'>
+    <div class='flex-r main-container'>
+        <div id='leaderboard' class='grow-1 flex-c col-right test-border'>
             <div class='leaders-fastest'>
-            
+                fastest
             </div>
             <div class='leaders-moves'>
-
+                move count
             </div>
         </div>
-        <div id='game-board' class='game-board gb-4x4 test-border'>
+        <div id='game-board' class='game-board gb-4x4 grow-0'>
             
+        </div>
+        <div id='current-stats' class='grow-1 test-border'>
+            <div class='timer'>
+                <div>Time</div>
+                <div id='clock'>00:00.000</div>
+            </div>
+            <div class='moves-counter'>
+                <div>Moves</div>
+                <div id='move-count'>0</div>
+            </div>
         </div>
     </div>
 
