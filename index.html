@@ -7,50 +7,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/index.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="./styles/card.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./styles/metal.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
 </head>
-<body class='flex-c'>
+<body class='flex-c metal'>
     <header>
-        <h1>MatchBots</h1>
+        <h1 class='metal-text'>MatchBots</h1>
     </header>
-    <nav class='flex-r'>
-        <a href='' class='signin-link'>Sign In</a>
-        <a href='' class='signout-link'>Sign Out</a>
-        <a href='' class='register-link'>Register</a>
-    </nav>
+    <!-- <nav class='flex-r metal linear metal-border pd-1 hide'>
+        <a href='' class='signin-link metal-clicky-text'>Sign In</a>
+        <a href='' class='signout-link metal-clicky-text'>Sign Out</a>
+        <a href='' class='register-link metal-clicky-text'>Register</a>
+    </nav> -->
     <div class='control-panel flex-r stretch'>
         <div>
-            <i id='refresh-icon' class="material-icons refresh-icon">
+            <i id='refresh-icon' class="material-icons refresh-icon metal radial metal-border metal-clicky">
                 refresh
             </i>
+            <!-- <i id='connect-icon' class="material-icons connect-icon metal radial metal-border metal-clicky hide">
+                compare_arrows
+            </i> -->
         </div>
     </div>
     <div class='flex-r main-container'>
-        <div id='leaderboard' class='grow-1 flex-c col-cntr b-out pd-1'>
-            <h2>Leaderboard</h2>
-            <div class='leaders-fastest b-in mg-1'>
-                Fastest
+        <aside id='leaderboard' class='grow-1 flex-r row-right pd-1'>
+            <div class='metal linear metal-border stretch pd-2'>
+                <h2 class='pd-1'>Leaderboard</h2>
+                <div class='leaders-fastest b-in pd-1 br-5'>
+                    <p class='b-gr b-bot'>Fastest</p>
+                    <div id='leader-time' class='force-monospace'></div>
+                </div>
+                <div class='leaders-moves b-in pd-1 br-5'>
+                    <p class='b-gr b-bot'>Moves</p>
+                    <div id='leader-moves' class='force-monospace'></div>
+                </div>
             </div>
-            <div class='leaders-moves b-in mg-1'>
-                Moves
-            </div>
-        </div>
-        <div id='game-board' class='game-board gb-4x4 grow-0 b-out'>
+        </aside>
+        <div id='game-board' class='game-board gb-4x4 grow-0'>
             
         </div>
-        <div id='current-stats' class='grow-1 flex-c col-cntr b-out pd-1'>
-            <h2>Game Stats</h2>
-            <div class='timer b-in mg-1'>
-                <div>Time</div>
-                <div id='clock'>00:00.000</div>
+        <aside id='current-stats' class='grow-1 flex-r col-cntr pd-1'>
+            <div class='metal linear metal-border stretch pd-2'>
+                <h2>Game Stats</h2>
+                <div class='timer b-in pd-1 br-5 flex-c col-cntr'>
+                    <div>Time</div>
+                    <div id='clock' class='force-monospace'>00:00.000</div>
+                </div>
+                <div class='moves-counter b-in pd-1 br-5 flex-c col-cntr'>
+                    <div>Moves</div>
+                    <div id='move-count'>0</div>
+                </div>
             </div>
-            <div class='moves-counter b-in mg-1'>
-                <div>Moves</div>
-                <div id='move-count'>0</div>
-            </div>
-        </div>
+        </aside>
     </div>
 
     <script type="module" src="./scripts/index.js"></script>

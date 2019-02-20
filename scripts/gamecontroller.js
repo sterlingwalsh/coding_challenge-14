@@ -11,6 +11,17 @@ class GameController{
     }
 
     constructor(){
+        this.gameHist = {times: [87342, 47332, 65232, 74643],
+                        moveCounts: [29, 19, 22, 25]};
+    }
+
+    getHist(){
+        const hist = {};
+        Object.keys(this.gameHist).forEach((key) => {
+            hist[key] = [...this.gameHist[key]];
+        });
+
+        return hist;
     }
 
     start = () => {
@@ -58,13 +69,14 @@ class GameController{
         let returnData = {
             answer:-1,
             items:[el, this.firstPick],
-            moveCount: ++this.moveCount,
+            moveCount: this.moveCount,
+            time: 0,
         }
         if(!this.firstPick){
             this.firstPick = el;
             returnData.answer = this.result.noCompare;
         }else if (this.firstPick){
-
+            returnData.moveCount = ++this.moveCount;
             const firstKey = this.firstPick.getAttribute('key');
             const secondKey = el.getAttribute('key');
 
@@ -76,7 +88,11 @@ class GameController{
                 this.boardData[secondKey].found = true;
                 if(this.checkWin()){
                     returnData.answer = this.result.complete;
+                    returnData.time = new Date().getTime() - this.startTime;
+                    this.appendGame(returnData.moveCount, returnData.time);
                 }else{
+                    this.boardData[firstKey].found = true;
+                    this.boardData[secondKey].found = true;
                     returnData.answer = this.result.match;
                 }
             }else if(firstPickVal !== secondVal){
@@ -92,6 +108,12 @@ class GameController{
             if(!this.boardData[i].found)return false;
         }
         return true;
+    }
+
+    appendGame(moveCount, time){
+        this.gameHist.times.push(time);
+        this.gameHist.moveCounts.push(moveCount);
+        console.log(this.gameHist);
     }
 }
 

@@ -1,20 +1,28 @@
 .card{
-    border:1px solid black;
-    position: relative;
+    border-radius: 1rem;
+    /* position: relative; */
+}
+
+.card-inner{
     transition: transform 1s ease-in-out;
     transform-style: preserve-3d;
-    border-radius: 1rem;
+    margin:10px;
+    position: relative;
+}
+
+.card *{
+    pointer-events: none;
 }
 
 .show-back{
     transform: rotateY(180deg);
 }
 
-.card-side{
-    transition: opacity 0s linear .5s; 
-}
+/* .card-side{
 
-.card-back{
+} */
+
+.card-image{
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -25,13 +33,15 @@
 }
 
 .card .card-back{
-    opacity: 0;
+    /* opacity: 0; */
+    transform: rotateY(-180deg) translateZ(8px) ;
+
 }
 
-.card.show-back .card-back{
+/* .card.show-back .card-back{
     opacity: 1;
 }
 
 .card.show-back .card-front{
     opacity: 0;
-}
+} */

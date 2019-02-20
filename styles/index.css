@@ -5,6 +5,8 @@
 
 *{
     font-family: hightech;
+    margin: 0;
+    padding: 0;
 }
 
 .test-border{
@@ -19,16 +21,18 @@
     border:3px inset lightgray;
 }
 
-.col-left{
-    align-items: flex-start;
+.b-gr{
+    border-bottom: 3px groove darkgray;
 }
 
-.col-right{
-    align-items: flex-end;   
+.b-bot{
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
 }
 
-.col-cntr{
-    align-items: center;
+.br-5{
+    border-radius: 5px;
 }
 
 .flex-r{
@@ -47,6 +51,28 @@
     justify-content: center;
 }
 
+.flex-fill{
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.col-left{
+    align-items: flex-start;
+}
+
+.col-right{
+    align-items: flex-end;   
+}
+
+.col-cntr{
+    align-items: center;
+}
+
+.row-right{
+    justify-content: flex-end;
+}
+
 .grow-0{
     flex-grow: 0;
 }
@@ -55,12 +81,29 @@
     flex-grow: 1;
 }
 
+.force-monospace{
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
 .ignore-click{
     pointer-events: none;
 }
 
+.line-border{
+    border:1px solid black;
+}
+
 .pd-1{
     padding:.5rem;
+}
+
+.pd-2{
+    padding: 1rem;
+}
+
+.pd-t-0{
+    padding-top: 0;
 }
 
 .mg-1{
@@ -73,6 +116,10 @@
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.txt-cntr{
+    text-align: center;
 }
 
 .stretch{
@@ -102,47 +149,55 @@ h1{
     text-align: center;
     letter-spacing: 4px;
     font-size: 3rem;
-    margin: 1rem;
+    margin: 1rem 0 .5rem 0;
+
 }
 
 nav{
     position: absolute;
     top:0;
-    left:0;
-    width: 100%;
+    right:0;
     justify-content: flex-end;
 }
 
 nav a{
     padding: .5rem;
+    text-decoration: none;
+    color: black;
+    transition: color .5s ease-in;
+}
+
+nav a:hover{
+    color: cyan;
 }
 
 .control-panel{
     justify-content: space-evenly;
+    margin-bottom: .5rem;
 }
 
-.material-icons.refresh-icon{
+.material-icons.refresh-icon, .material-icons.connect-icon{
     font-size: 48px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
+    text-align: center;
+    line-height: 64px;
+    transition: color .5s ease-in-out;
 }
 
-.refresh-icon:hover{
-    color: aqua;
-}
-
-.refresh-icon:active{
-    color: blue;
-}
-
-.refresh-icon-spin{
-    transition: 1s all ease-in-out;
-    transform: rotate(360deg);
+.material-icons.refresh-icon:hover, .material-icons.connect-icon:hover{
+    color: cyan;
 }
 
 .main-container{
     flex-grow: 1;
     align-items: stretch;
     justify-content: center;
+}
+
+.main-container aside{
+    flex-basis: 0;
 }
 
 .game-board{
