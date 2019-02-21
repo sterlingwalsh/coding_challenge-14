@@ -30,6 +30,11 @@
 
 .card-front{
     font-size: 10vh;
+    transition: color .5s ease-in;
+}
+
+.card:hover .card-front{
+    color: cyan;
 }
 
 .card .card-back{
