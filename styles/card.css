@@ -4,10 +4,13 @@
 }
 
 .card-inner{
-    transition: transform 1s ease-in-out;
     transform-style: preserve-3d;
     margin:10px;
     position: relative;
+}
+
+.card-transform{
+    transition: transform 1s ease-in-out;
 }
 
 .card *{

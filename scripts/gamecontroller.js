@@ -1,6 +1,3 @@
-import createCard from './card.js'
-
-
 class GameController{
 
     result = {
@@ -10,9 +7,23 @@ class GameController{
         complete: 3
     }
 
+    // cardState = {
+    //     picked: 0,
+    //     found: 1
+    // }
+
     constructor(){
         this.gameHist = {times: [87342, 47332, 65232, 74643],
                         moveCounts: [29, 19, 22, 25]};
+        this.gameData = {
+                            result: this.result.noCompare,
+                            moveCount: 0,
+                            time: 0,
+                            picks: [],
+                            board: []
+                        };
+        this.startTime = 0;
+        this.started = false;
     }
 
     getHist(){
@@ -30,82 +41,85 @@ class GameController{
         return true;
     }
 
-    resetBoard = (board) => {
-        while(board.hasChildNodes()) board.removeChild(board.firstChild);
-        this.boardData = [];
-        this.firstPick = null;
+    resetBoard = () => {
+        this.gameData = {
+            result: this.result.noCompare,
+            moveCount: 0,
+            time: 0,
+            picks: [],
+            board: []
+        };
         this.startTime = null;
         this.started = false;
         this.moveCount = 0;
     }
 
-    createGameBoard = (count = 16, board) => {
+    getCardInfo(key){
+        return this.gameData.board[key];
+    }
+
+    createGame = (count = 16) => {
         
         // a little randomization for the robots
-        const rnd = Math.random();
+        const rnd = Math.floor(Math.random() * 100);
         // initialize board data size
-        this.boardData.length = count;
+        const board = new Array(count);
         // list of potential values for each card
         let vals = new Array(count).fill().map((x, i) => (Math.floor(i/2) + rnd));
         
         for(let i = 0; i < count; i++){
             //set up board data
-            this.boardData[i] = {
+            board[i] = {
                 //randomly assign and remove values from the temp array
                 value:vals.splice(Math.floor(Math.random() * Math.floor(vals.length)), 1)[0],
                 found:false
             }
-            //get a new card div element and set its key, image
-            const card = createCard(i, this.boardData[i].value);
-
-            //append the new card to the bard
-            board.appendChild(card);
         }
 
-        console.log(this.boardData);
+        this.gameData.board = board;
+
+        console.log(this.gameData);
+        return this.gameData;
     }
 
-    doPick = (el) => {
-        let returnData = {
-            answer:-1,
-            items:[el, this.firstPick],
-            moveCount: this.moveCount,
-            time: 0,
-        }
-        if(!this.firstPick){
-            this.firstPick = el;
-            returnData.answer = this.result.noCompare;
-        }else if (this.firstPick){
-            returnData.moveCount = ++this.moveCount;
-            const firstKey = this.firstPick.getAttribute('key');
-            const secondKey = el.getAttribute('key');
+    doPick = (key) => {
 
-            const firstPickVal = this.boardData[firstKey].value;
-            const secondVal = this.boardData[secondKey].value;
+        let {picks, moveCount, result, time, board} = this.gameData;
+
+        if(picks.length > 1) picks.length = 0;
+        picks.push(key);
+
+        if(picks.length < 2){
+            result = this.result.noCompare;
+        }else if (picks.length === 2){
+            moveCount += 1;
+
+            const firstPickVal = board[picks[0]].value;
+            const secondVal = board[picks[1]].value;
 
             if(firstPickVal === secondVal){
-                this.boardData[firstKey].found = true;
-                this.boardData[secondKey].found = true;
+                board[picks[0]].found = true;
+                board[picks[1]].found = true;
+
                 if(this.checkWin()){
-                    returnData.answer = this.result.complete;
-                    returnData.time = new Date().getTime() - this.startTime;
-                    this.appendGame(returnData.moveCount, returnData.time);
+                    result = this.result.complete;
+                    time = new Date().getTime() - this.startTime;
+                    this.appendGame(moveCount, time);
                 }else{
-                    this.boardData[firstKey].found = true;
-                    this.boardData[secondKey].found = true;
-                    returnData.answer = this.result.match;
+                    result = this.result.match;
                 }
             }else if(firstPickVal !== secondVal){
-                returnData.answer = this.result.noMatch;
-            } 
-            this.firstPick = null;
+                result = this.result.noMatch;
+            }
         }
-        return returnData;
+        this.gameData = Object.assign(this.gameData, {picks, moveCount, result, time, board});
+        return this.gameData;
     }
 
     checkWin = () => {
-        for(let i = 0; i < this.boardData.length; i++){
-            if(!this.boardData[i].found)return false;
+        const board = this.gameData.board;
+        for(let i = 0; i < board.length; i++){
+            if(!board[i].found)return false;
         }
         return true;
     }
