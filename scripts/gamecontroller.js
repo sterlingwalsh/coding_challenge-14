@@ -7,23 +7,21 @@
 class GameController{
 
     // basic states the game can be in after a given move
-    result = {
+    static result = {
         noCompare: 0,
         noMatch: 1,
         match: 2,
         complete: 3
     }
 
+    static GAME_HIST = 'game_history';
+
     constructor(){
-        // past games scores in time and moves. used to construct leader boards
-        // could later be tied to a database for cross player comparison
-        this.gameHist = {times: [87342, 47332, 65232, 74643],
-                        moveCounts: [29, 19, 22, 25]};
 
         // The main game controlling object 
         this.gameData = {
                             // result after a given move
-                            result: this.result.noCompare,
+                            result: GameController.result.noCompare,
                             // total moves this game. 2 sections = 1 comparison made = 1 move
                             moveCount: 0,
                             // time elapsed during current game in millis
@@ -41,14 +39,22 @@ class GameController{
         this.started = false;
     }
 
+    updateHist(moveCount, time){
+        const gameHist = this.getHist();
+        gameHist.moveCounts.push(moveCount);
+        gameHist.times.push(time);
+        window.localStorage.setItem(GameController.GAME_HIST, JSON.stringify(gameHist));
+    }
+
     getHist(){
         // returns a new object containing the historical game scores
-        const hist = {};
-        Object.keys(this.gameHist).forEach((key) => {
-            hist[key] = [...this.gameHist[key]];
-        });
-
-        return hist;
+        const storage = window.localStorage;
+        const gameHist = JSON.parse(storage.getItem(GameController.GAME_HIST));
+        if(gameHist){
+            return gameHist;
+        }else{
+            return {moveCounts: [], times:[]};
+        }        
     }
 
     // record the start time for a new game. return value should never be false in this case, but is 
@@ -62,7 +68,7 @@ class GameController{
     // restore the game to a known starting position. This does NOT start a new game
     resetBoard = () => {
         this.gameData = {
-            result: this.result.noCompare,
+            result: GameController.result.noCompare,
             moveCount: 0,
             time: 0,
             picks: [],
@@ -117,7 +123,7 @@ class GameController{
         // if the new selection is the only item currently picked, there is nothing to compare
         if(picks.length < 2){
             // set the result to noCompare and skip to restructuring the gameData object
-            result = this.result.noCompare;
+            result = GameController.result.noCompare;
         // If there are now 2 selections made, a comparison must be done
         }else if (picks.length === 2){
             // add this move to the counter
@@ -134,20 +140,20 @@ class GameController{
                 // test if now all cards have been successfully matched
                 if(this.checkWin()){
                     // mark the game state as complete
-                    result = this.result.complete;
+                    result = GameController.result.complete;
                     // record the total time taken
                     time = new Date().getTime() - this.startTime;
                     // add this game to the history
-                    this.appendGame(moveCount, time);
+                    this.updateHist(moveCount, time);
                 }else{
                     // if the game isnt complete, jsut return that a new match had been found
                     // this will also still return the 2 chosen cards.
-                    result = this.result.match;
+                    result = GameController.result.match;
                 }
             }else if(firstPickVal !== secondVal){
                 // if this was not a new match, return noMatch
                 // this will also return the 2 chosen cards so that they can be flippedToFront
-                result = this.result.noMatch;
+                result = GameController.result.noMatch;
             }
         }
         // reconstruct a new gameData object from the updates
@@ -164,13 +170,6 @@ class GameController{
             if(!board[i].found)return false;
         }
         return true;
-    }
-
-    // add a new game to the historical games
-    appendGame(moveCount, time){
-        this.gameHist.times.push(time);
-        this.gameHist.moveCounts.push(moveCount);
-        console.log(this.gameHist);
     }
 }
 

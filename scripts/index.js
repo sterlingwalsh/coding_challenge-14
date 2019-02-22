@@ -74,10 +74,10 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
 
     // act on the answer reveived from the controller
     switch(response.result) {
-        case GC.result.noCompare:
+        case GameController.result.noCompare:
             console.log('nothing to compare');
             break;
-        case GC.result.noMatch:
+        case GameController.result.noMatch:
             // a bad match, wait 2 seconds and flip them back to the front
             // this transition may be cut short by a new selection via the above code
             console.log("no match");
@@ -91,7 +91,7 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
                 })
             }, 2000);
             break;
-        case GC.result.complete:
+        case GameController.result.complete:
             stopTimer();
             populateLeaderboard(GC.getHist());
             break;
