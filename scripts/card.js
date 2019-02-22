@@ -7,6 +7,9 @@ const cardDiv =`<div class='card metal linear metal-border flex-fill metal-click
                     </div>
                 </div>`;
 
+// create a card with a key attribute matching its index in the gameData.board array and
+// a value matching the image being pulled from the robohash api
+// the value is stored in the gamedata.board array and used for match comparisons
 const createCard = (key, value) => {
     const card = stringToElement(cardDiv);
     card.setAttribute('key', key);
@@ -14,9 +17,10 @@ const createCard = (key, value) => {
     return card;
 }
 
+// take a valid html string and convert it to nodes
 const stringToElement = (html) => {
     const template = document.createElement('template')
-    template.innerHTML = cardDiv;
+    template.innerHTML = html;
     return template.content.childNodes[0];
 }
 

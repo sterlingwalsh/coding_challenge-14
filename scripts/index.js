@@ -7,7 +7,8 @@ const setupGame = () => {
     updateMoveCount(0);
     stopTimer();
     updateTimer(0);
-    GC.resetBoard();    
+    GC.resetBoard();  
+    // create the game within the controller and return the game object  
     const gameData = GC.createGame(16);
     createCards(gameData);
     populateLeaderboard(GC.getHist());
@@ -80,6 +81,9 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
             // a bad match, wait 2 seconds and flip them back to the front
             // this transition may be cut short by a new selection via the above code
             console.log("no match");
+            // response.picks must be deconstructed into a new array or a race condition occurs
+            // where a new selection could be populated in the gameData object before the
+            // setTimeout callback executes resulting in a new selection flipping to front prematurely
             let nonMatched = [...response.picks];
             setTimeout(() => {
                 nonMatched.forEach((key) => {
