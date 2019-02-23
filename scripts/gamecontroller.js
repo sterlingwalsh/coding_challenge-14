@@ -104,7 +104,7 @@ class GameController{
 
         this.gameData.board = board;
 
-        console.log(this.gameData);
+        // console.log(this.gameData);
         return this.gameData;
     }
 

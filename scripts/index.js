@@ -75,12 +75,12 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
     // act on the answer reveived from the controller
     switch(response.result) {
         case GameController.result.noCompare:
-            console.log('nothing to compare');
+            // console.log('nothing to compare');
             break;
         case GameController.result.noMatch:
             // a bad match, wait 2 seconds and flip them back to the front
             // this transition may be cut short by a new selection via the above code
-            console.log("no match");
+            // console.log("no match");
             // response.picks must be deconstructed into a new array or a race condition occurs
             // where a new selection could be populated in the gameData object before the
             // setTimeout callback executes resulting in a new selection flipping to front prematurely
@@ -96,7 +96,8 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
             populateLeaderboard(GC.getHist());
             break;
         default:
-            console.log("switch", response);
+            null;
+            // console.log("switch", response);
     }
 });
 
@@ -157,7 +158,7 @@ const flipCardToBack = (card) => {
     card.getElementsByClassName('card-inner')[0].classList.add('show-back');
 }
 
-// attempt to create a new game in the controer
+// attempt to create a new game in the controller
 const startGame = () => {
 
     if(GC.start()){
