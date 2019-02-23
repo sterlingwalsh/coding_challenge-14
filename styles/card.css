@@ -1,3 +1,5 @@
+/* this file holds general style information related to the cards, layout is still contained in index.css */
+
 .card{
     border-radius: 1rem;
     /* position: relative; */
@@ -21,10 +23,6 @@
     transform: rotateY(180deg);
 }
 
-/* .card-side{
-
-} */
-
 .card-image{
     background-position: center;
     background-repeat: no-repeat;
@@ -32,7 +30,6 @@
 }
 
 .card-front{
-    font-size: 10vh;
     transition: color .5s ease-in;
 }
 
@@ -45,11 +42,3 @@
     transform: rotateY(-180deg) translateZ(8px) ;
 
 }
-
-/* .card.show-back .card-back{
-    opacity: 1;
-}
-
-.card.show-back .card-front{
-    opacity: 0;
-} */

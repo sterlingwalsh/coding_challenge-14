@@ -201,8 +201,16 @@ const formatTime = (mils) => {
 
 // call for a new game on refresh click
 document.getElementById('refresh-icon').addEventListener('click', (evt) => {
-    // evt.target.classList.add('refresh-icon-spin')
+    clearGameBoard();
     setupGame();
 });
+
+// delete board cards before remaking the board
+const clearGameBoard = () =>{
+    const board = document.getElementById('game-board');
+    while(board.firstChild){
+        board.removeChild(board.firstChild);
+    }
+}
 
 setupGame();
