@@ -56,7 +56,7 @@ class GameController{
     }
 
     // restore the game to a known starting position. This does NOT start a new game
-    resetBoard(){
+    resetBoard = () => {
         this.gameData = {
             result: GameController.result.noCompare,
             moveCount: 0,
@@ -74,7 +74,7 @@ class GameController{
         return {...this.gameData.board[key]};
     }
 
-    createGame(count = 16){
+    createGame = (count = 16) => {
         
         // a little randomization for the robots
         const rnd = Math.floor(Math.random() * 100);
@@ -98,7 +98,7 @@ class GameController{
         return this.gameData;
     }
 
-    doPick(key){
+    doPick = (key) => {
 
         // desonstruct the gameData object for convenience
         let {picks, moveCount, result, time, board} = this.gameData;
@@ -153,7 +153,7 @@ class GameController{
     }
 
     // Determine whether all cards have been successfully matched by checking the found property in the gameData
-    checkWin(){
+    checkWin = () => {
         const board = this.gameData.board;
         for(let i = 0; i < board.length; i++){
             // if ANY are currently not found, immediately return false
@@ -312,7 +312,7 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
 });
 
 // populate the leaderboard using an object games = {times:[], moveCounts:[]}
-const populateLeaderboard(games){
+const populateLeaderboard = (games) => {
     // create temp arrays that are sorted
     let times = games.times.sort();
     let moveCounts = games.moveCounts.sort();
@@ -343,11 +343,11 @@ const populateLeaderboard(games){
     document.getElementById('leader-moves').innerHTML = moves;
 }
 
-const updateMoveCount(count){
+const updateMoveCount = (count) => {
     document.getElementById('move-count').textContent = count;
 }
 
-const flipCardToFront(card){
+const flipCardToFront = (card) => {
     card.getElementsByClassName('card-inner')[0].classList.remove('show-back');
 }
 
@@ -360,7 +360,7 @@ document.getElementById('game-board').addEventListener('transitionend', (evt) =>
     }
 });
 
-const flipCardToBack(card){
+const flipCardToBack = (card) => {
     // show-back is removed at the beginning of the transition to allow the transition to be cut short
     // we use a custom attribute to flag the card as flipped before show-back is added. flipped is set to false
     // either after the transition ends via eventListener or when the animation is cut short
@@ -369,7 +369,7 @@ const flipCardToBack(card){
 }
 
 // attempt to create a new game in the controller
-const startGame(){
+const startGame = () => {
 
     if(GC.start()){
         startTimer();
@@ -383,14 +383,14 @@ const startGame(){
 const clock = document.getElementById('clock');
 let timerInterval = null;
 
-const startTimer(){
+const startTimer = () => {
     timerInterval = setInterval(() => {   
         updateTimer(new Date().getTime() - GC.startTime);
     }, 77);
 }
 
 // clear the interval and update the text based on the actual time of the game ending
-const stopTimer(){
+const stopTimer = () => {
     try{
         clearInterval(timerInterval);
         updateTimer(new Date().getTime() - GC.startTime);
@@ -399,11 +399,11 @@ const stopTimer(){
     }
 }
 // pull current time, format the difference between game start
-const updateTimer(mils){
+const updateTimer = (mils) => {
     clock.textContent = formatTime(mils);
 }
 // formatting the milliseconds to MM:ss.mmm
-const formatTime(mils){
+const formatTime = (mils) => {
     const date = new Date(mils);
     return (`${date.getMinutes().toString().padStart(2,0)}` + 
             `:${date.getSeconds().toString().padStart(2,0)}` +
@@ -417,7 +417,7 @@ document.getElementById('refresh-icon').addEventListener('click', (evt) => {
 });
 
 // delete board cards before remaking the board
-const clearGameBoard(){
+const clearGameBoard = () =>{
     const board = document.getElementById('game-board');
     while(board.firstChild){
         board.removeChild(board.firstChild);
