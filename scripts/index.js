@@ -1,7 +1,7 @@
 import GameController from './gamecontroller.js'
 import createCard from './card.js'
 const GC = new GameController();
-console.re.log('logging index');
+// console.re.log('logging index');
 const setupGame = () => {
     updateMoveCount(0);
     stopTimer();
