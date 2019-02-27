@@ -1,3 +1,5 @@
+console.re.log('logging index');
+
 import GameController from './gamecontroller.js'
 import createCard from './card.js'
 const GC = new GameController();
