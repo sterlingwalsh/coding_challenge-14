@@ -215,3 +215,16 @@ const clearGameBoard = () =>{
 }
 
 setupGame();
+
+
+const overlay = document.getElementById('overlay');
+
+const toggleOverlay = () => {
+    // if(overlay.classList.contains('overlay-collapse', 'overlay-expand')){ 
+    //     overlay.classList.remove('overlay-expand');
+    // }
+    // overlay.classList.toggle('overlay-collapse');
+    overlay.classList.toggle('overlay-expand');
+}
+
+overlay.addEventListener('click',toggleOverlay);

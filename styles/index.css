@@ -35,6 +35,16 @@
     border-radius: 5px;
 }
 
+.button{
+    cursor: pointer;
+    text-align: center;
+    transition: color .5s ease-in-out;
+}
+
+.button:hover{
+    color: cyan;
+}
+
 .flex-r{
     display: flex;
     align-items: center;
@@ -45,8 +55,15 @@
     flex-direction: column;
 }
 
-.flex-cntr{
+.flex-r-cntr{
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-c-cntr{
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -86,6 +103,10 @@
     font-variant-numeric: tabular-nums;
 }
 
+.hide{
+    display: none;
+}
+
 .ignore-click{
     pointer-events: none;
 }
@@ -110,6 +131,10 @@
     margin:.5rem;
 }
 
+.mg-side-8{
+    margin: 0 4rem;
+}
+
 .match-parent{
     position: absolute;
     top: 0;
@@ -118,38 +143,39 @@
     left: 0;
 }
 
-.txt-cntr{
-    text-align: center;
+.relative{
+    position: relative;
 }
 
 .stretch{
     align-self: stretch;
 }
 
+.txt-cntr{
+    text-align: center;
+}
+
 html, body{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100vh;
 }
 
 body, html, body *{
     box-sizing: border-box;
 }
 
-body > *{
-    flex-grow: 0;
-}
-
-body{
-    align-items: stretch;
+.main-container{
+    height: 100vh;
+    overflow: hidden;
+    border: 1px solid red;
 }
 
 h1{
     text-align: center;
     letter-spacing: 4px;
     font-size: 3rem;
-    margin: 1rem 0 .5rem 0;
+   padding: .5rem 0 .5rem 0;
 
 }
 
@@ -172,36 +198,25 @@ nav a:hover{
 }
 
 .control-panel{
-    justify-content: space-evenly;
     margin-bottom: .5rem;
+}
+
+.control-panel > div{
+    flex-basis: 0;
 }
 
 .material-icons.refresh-icon, .material-icons.connect-icon{
     font-size: 48px;
     width: 64px;
     height: 64px;
-    cursor: pointer;
-    text-align: center;
     line-height: 64px;
-    transition: color .5s ease-in-out;
 }
 
-.material-icons.refresh-icon:hover, .material-icons.connect-icon:hover{
-    color: cyan;
-}
-
-.main-container{
-    flex-grow: 1;
-    align-items: stretch;
-    justify-content: center;
-}
-
-.main-container aside{
-    flex-basis: 0;
+.timer{
+    min-width: 11em;
 }
 
 .game-board{
-    height: 80vh;
     perspective: 1500px;
 }
 
@@ -231,4 +246,49 @@ nav a:hover{
 
 .card{
     margin: .5rem;
+}
+
+
+.overlay{  
+    position: absolute;
+    transition: all .75s ease-in-out;
+    width: 100%;
+    top: 0;
+    transform: translateY(0%);
+    height: 4vh;
+}
+
+.overlay-collapse{
+    background: none;
+}
+
+.overlay-expand{
+    transform: translateY(-100%);
+    background: rgba(225, 225, 225, .9);
+    height: 100vh;
+}
+
+.overlay-expand #leaderboard{
+    margin-top: 1rem;
+}
+
+#leaderboard{
+    transition: all .75s ease-in-out;
+    margin-top: 5rem;
+}
+
+header{
+    height: 7vh;
+}
+
+.control-panel{
+    height: 7vh;
+}
+
+.game-board{
+    height:78vh;
+}
+
+.score-tray{
+    height: 4vh;
 }

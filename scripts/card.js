@@ -1,6 +1,6 @@
 const cardDiv =`<div class='card metal linear metal-border flex-fill metal-clicky'>
                     <div class='card-inner match-parent grow-1 card-transform'>
-                        <div class='card-front card-side match-parent flex-cntr metal linear-small'><p>?</p></div>
+                        <div class='card-front card-side match-parent flex-r-cntr metal linear-small'><p>?</p></div>
                         <div class='card-back card-side match-parent flex-fill metal linear-small'>
                             <div class='card-image mg-1 grow-1'></div>
                         </div>
