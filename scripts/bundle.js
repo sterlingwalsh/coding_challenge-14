@@ -3,7 +3,7 @@
 // On actions by the player, the actions are passed to the controller and a new gameData object is returned
 // to the UI. this should allow for the core logic of the controller to later be moved to a server
 // and allow for various multiplayer modes
-
+alert('bundle');
 class GameController{
 
     // basic states the game can be in after a given move
