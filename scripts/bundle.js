@@ -4,7 +4,7 @@
 // to the UI. this should allow for the core logic of the controller to later be moved to a server
 // and allow for various multiplayer modes
 
-console.log('logging');
+console.re.log('logging');
 class GameController{
 
     // basic states the game can be in after a given move
