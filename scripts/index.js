@@ -1,8 +1,5 @@
-alert('index top');
 import GameController from './gamecontroller.js'
 import createCard from './card.js'
-
-alert('start Index');
 const GC = new GameController();
 
 const setupGame = () => {
@@ -39,7 +36,7 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
     // if the game has not yet started, attempt to begin a new game (will also start the timer)
     if(!GC.started){
         if(!startGame()){
-            alert("error setting up game");
+            
             return null;
         }
     }

@@ -6,18 +6,7 @@
 
 class GameController{
 
-    // basic states the game can be in after a given move
-    static result = {
-        noCompare: 0,
-        noMatch: 1,
-        match: 2,
-        complete: 3
-    }
-
-    static GAME_HIST = 'game_history';
-
     constructor(){
-        alert('createController');
         // The main game controlling object 
         this.gameData = {
                             // result after a given move
@@ -172,5 +161,15 @@ class GameController{
         return true;
     }
 }
+
+// basic states the game can be in after a given move
+GameController.result = {
+    noCompare: 0,
+    noMatch: 1,
+    match: 2,
+    complete: 3
+}
+
+GameController.GAME_HIST = 'game_history';
 
 export default GameController

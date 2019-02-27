@@ -7,18 +7,6 @@
 console.log('logging');
 class GameController{
 
-    // basic states the game can be in after a given move
-    static result = () => {
-        return{
-            noCompare: 0,
-            noMatch: 1,
-            match: 2,
-            complete: 3
-        }
-    }
-
-    static GAME_HIST = () => {return 'game_history'};
-
     constructor(){
         // The main game controlling object 
         this.gameData = {
