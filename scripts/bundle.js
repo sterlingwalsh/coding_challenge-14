@@ -4,24 +4,26 @@
 // to the UI. this should allow for the core logic of the controller to later be moved to a server
 // and allow for various multiplayer modes
 
-console.re.log('logging');
+console.log('logging');
 class GameController{
 
     // basic states the game can be in after a given move
-    static result = {
-        noCompare: 0,
-        noMatch: 1,
-        match: 2,
-        complete: 3
+    static result = () => {
+        return{
+            noCompare: 0,
+            noMatch: 1,
+            match: 2,
+            complete: 3
+        }
     }
 
-    static GAME_HIST = 'game_history';
+    static GAME_HIST = () => {return 'game_history'};
 
     constructor(){
         // The main game controlling object 
         this.gameData = {
                             // result after a given move
-                            result: GameController.result.noCompare,
+                            result: GameController.result().noCompare,
                             // total moves this game. 2 sections = 1 comparison made = 1 move
                             moveCount: 0,
                             // time elapsed during current game in millis
@@ -68,7 +70,7 @@ class GameController{
     // restore the game to a known starting position. This does NOT start a new game
     resetBoard = () => {
         this.gameData = {
-            result: GameController.result.noCompare,
+            result: GameController.result().noCompare,
             moveCount: 0,
             time: 0,
             picks: [],
@@ -123,7 +125,7 @@ class GameController{
         // if the new selection is the only item currently picked, there is nothing to compare
         if(picks.length < 2){
             // set the result to noCompare and skip to restructuring the gameData object
-            result = GameController.result.noCompare;
+            result = GameController.result().noCompare;
         // If there are now 2 selections made, a comparison must be done
         }else if (picks.length === 2){
             // add this move to the counter
@@ -140,7 +142,7 @@ class GameController{
                 // test if now all cards have been successfully matched
                 if(this.checkWin()){
                     // mark the game state as complete
-                    result = GameController.result.complete;
+                    result = GameController.result().complete;
                     // record the total time taken
                     time = new Date().getTime() - this.startTime;
                     // add this game to the history
@@ -148,12 +150,12 @@ class GameController{
                 }else{
                     // if the game isnt complete, jsut return that a new match had been found
                     // this will also still return the 2 chosen cards.
-                    result = GameController.result.match;
+                    result = GameController.result().match;
                 }
             }else if(firstPickVal !== secondVal){
                 // if this was not a new match, return noMatch
                 // this will also return the 2 chosen cards so that they can be flippedToFront
-                result = GameController.result.noMatch;
+                result = GameController.result().noMatch;
             }
         }
         // reconstruct a new gameData object from the updates
@@ -286,10 +288,10 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
 
     // act on the answer reveived from the controller
     switch(response.result) {
-        case GameController.result.noCompare:
+        case GameController.result().noCompare:
             // console.log('nothing to compare');
             break;
-        case GameController.result.noMatch:
+        case GameController.result().noMatch:
             // a bad match, wait 2 seconds and flip them back to the front
             // this transition may be cut short by a new selection via the above code
             // console.log("no match");
@@ -303,7 +305,7 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
                 })
             }, 2000);
             break;
-        case GameController.result.complete:
+        case GameController.result().complete:
             stopTimer();
             populateLeaderboard(GC.getHist());
             break;
