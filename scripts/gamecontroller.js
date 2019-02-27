@@ -17,7 +17,7 @@ class GameController{
     static GAME_HIST = 'game_history';
 
     constructor(){
-
+        alert('createController');
         // The main game controlling object 
         this.gameData = {
                             // result after a given move
