@@ -168,7 +168,6 @@ body, html, body *{
 .main-container{
     height: 100vh;
     overflow: hidden;
-    border: 1px solid red;
 }
 
 h1{
