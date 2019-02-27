@@ -1,8 +1,9 @@
+alert('index top');
 import GameController from './gamecontroller.js'
 import createCard from './card.js'
-
-const GC = new GameController();
 alert('start Index');
+const GC = new GameController();
+
 const setupGame = () => {
     updateMoveCount(0);
     stopTimer();
