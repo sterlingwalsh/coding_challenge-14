@@ -48,14 +48,14 @@ class GameController{
 
     // record the start time for a new game. return value should never be false in this case, but is 
     // added in case some future situation requires a check to be made
-    start = () => {
+    start(){
         this.startTime = new Date().getTime();
         this.started = true;
         return true;
     }
 
     // restore the game to a known starting position. This does NOT start a new game
-    resetBoard = () => {
+    resetBoard(){
         this.gameData = {
             result: GameController.result.noCompare,
             moveCount: 0,
@@ -73,7 +73,7 @@ class GameController{
         return {...this.gameData.board[key]};
     }
 
-    createGame = (count = 16) => {
+    createGame(count = 16){
         
         // a little randomization for the robots
         const rnd = Math.floor(Math.random() * 100);
@@ -97,7 +97,7 @@ class GameController{
         return this.gameData;
     }
 
-    doPick = (key) => {
+    doPick(key){
 
         // desonstruct the gameData object for convenience
         let {picks, moveCount, result, time, board} = this.gameData;
@@ -152,7 +152,7 @@ class GameController{
     }
 
     // Determine whether all cards have been successfully matched by checking the found property in the gameData
-    checkWin = () => {
+    checkWin(){
         const board = this.gameData.board;
         for(let i = 0; i < board.length; i++){
             // if ANY are currently not found, immediately return false
