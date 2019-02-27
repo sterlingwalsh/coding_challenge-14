@@ -3,7 +3,8 @@
 // On actions by the player, the actions are passed to the controller and a new gameData object is returned
 // to the UI. this should allow for the core logic of the controller to later be moved to a server
 // and allow for various multiplayer modes
-alert('bundle');
+
+console.log('logging');
 class GameController{
 
     // basic states the game can be in after a given move
@@ -17,7 +18,6 @@ class GameController{
     static GAME_HIST = 'game_history';
 
     constructor(){
-        alert('createController');
         // The main game controlling object 
         this.gameData = {
                             // result after a given move
@@ -213,9 +213,7 @@ const stringToElement = (html) => {
 
 
 
-alert('index top');
 
-alert('start Index');
 const GC = new GameController();
 
 const setupGame = () => {
@@ -252,7 +250,6 @@ document.getElementById('game-board').addEventListener('click', (evt) => {
     // if the game has not yet started, attempt to begin a new game (will also start the timer)
     if(!GC.started){
         if(!startGame()){
-            alert("error setting up game");
             return null;
         }
     }
