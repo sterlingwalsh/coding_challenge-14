@@ -214,8 +214,6 @@ const stringToElement = (html) => {
 
 
 alert('index top');
-import GameController from './gamecontroller.js'
-import createCard from './card.js'
 
 alert('start Index');
 const GC = new GameController();
