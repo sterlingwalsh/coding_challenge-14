@@ -28,6 +28,7 @@ class GameController{
         this.started = false;
     }
 
+    // add a game to the stored game history 
     updateHist(moveCount, time){
         const gameHist = this.getHist();
         gameHist.moveCounts.push(moveCount);
@@ -170,6 +171,7 @@ GameController.result = {
     complete: 3
 }
 
+// set class variables
 GameController.GAME_HIST = 'game_history';
 
 export default GameController

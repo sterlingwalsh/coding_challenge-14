@@ -19,7 +19,8 @@ const createCards = (gameData) => {
         //get a new card div element and set its key, image
         const card = createCard(i, item.value);
         //append the new card to the bard
-        board.appendChild(card);
+        // board.appendChild(card);
+        board.innerHTML += card;
     });
 }
 
@@ -191,12 +192,12 @@ const stopTimer = () => {
 const updateTimer = (mils) => {
     clock.textContent = formatTime(mils);
 }
-// formatting the milliseconds to MM:ss.mmm
+// formatting the milliseconds to MM:ss.mm
 const formatTime = (mils) => {
     const date = new Date(mils);
     return (`${date.getMinutes().toString().padStart(2,0)}` + 
             `:${date.getSeconds().toString().padStart(2,0)}` +
-            `.${date.getMilliseconds().toString().padStart(3,0)}`);
+            `.${date.getMilliseconds().toString().padStart(2,0).substring(0,2)}`);
 }
 
 // call for a new game on refresh click
@@ -216,6 +217,7 @@ const clearGameBoard = () =>{
 setupGame();
 
 
+// control high score overlay
 const overlay = document.getElementById('overlay');
 
 const toggleOverlay = () => {
