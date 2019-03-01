@@ -8,7 +8,6 @@
 .card-inner{
     transform-style: preserve-3d;
     margin:10px;
-    position: relative;
 }
 
 .card-transform{

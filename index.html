@@ -14,53 +14,53 @@
       <!-- <script src="//console.re/connector.js" data-channel="e-gethub" id="consolerescript"></script> -->
 </head>
 <body class='flex-c metal col-cntr'>
-    <div class='main-container'>
-        <header class='header'>
-            <h1 class='metal-text'>MatchBots</h1>
+    <div class='main-container flex-c'>
+        <header class='header grow-0'>
+            <p class='title-text metal-text'>MatchBots</p>
         </header>
         <!-- <nav class='flex-r metal linear metal-border pd-1 hide'>
             <a href='' class='signin-link metal-clicky-text'>Sign In</a>
             <a href='' class='signout-link metal-clicky-text'>Sign Out</a>
             <a href='' class='register-link metal-clicky-text'>Register</a>
         </nav> -->
-        <div class='control-panel flex-r'>
-            <!-- <div class=''> -->
-                <div class='grow-1 flex-c mg-side-8 metal linear-small metal-border'>
+        <div class='control-panel flex-r flex-0'>
+                <div class='spacer grow-1'></div>
+                <div class='grow-0 flex-c metal linear-small metal-border'>
                     <div class='timer pd-1 br-5 flex-c col-cntr'>
                         <div>Time</div>
                         <div id='clock' class='force-monospace'>00:00.000</div>
                     </div>
                 </div>
+                <div class='spacer grow-1'></div>
                 <i id='refresh-icon' class="button grow-0 material-icons refresh-icon metal radial metal-border metal-clicky">
                     refresh
                 </i>
-                <div class='grow-1 flex-c mg-side-8 metal linear-small  metal-border'>
+                <div class='spacer grow-1'></div>
+                <div class='grow-0 flex-c metal linear-small  metal-border'>
                     <div class='moves-counter pd-1 br-5 flex-c col-cntr'>
                         <div>Moves</div>
                         <div id='move-count'>0</div>
                     </div>
                 </div>    
+                <div class='spacer grow-1'></div>
                 <!-- <i id='connect-icon' class="material-icons connect-icon metal radial metal-border metal-clicky hide">
                     compare_arrows
                 </i> -->
-            <!-- </div> -->
         </div>
-        <!-- <div class='flex-r'> -->
             
-        <div id='game-board' class='game-board gb-4x4'>
+        <div id='game-board' class='game-board gb-4x4 grow-1 self-cntr pd-2'>
             
         </div>
 
-        <div class='score-tray relative'>
+        <div class='score-tray grow-0 relative'>
             <div id='overlay' class='overlay flex-c col-cntr'>
                 <div class='spacer grow-1'></div>
-                <div id='high-score-button' class='button metal linear-small metal-border metal-clicky pd-2 mg-1 grow-0'>
+                <div id='high-score-button' class='button metal linear-small metal-border metal-clicky pd-2 grow-0'>
                     High Scores
                 </div>
                 
                 <div id='leaderboard' class='grow-0'>
                     <div class='metal linear metal-border pd-2'>
-                        <!-- <h2 class='pd-1'>Leaderboard</h2> -->
                         <div class='leaders-fastest b-in pd-1 mg-1 br-5'>
                             <p class='b-gr b-bot'>Fastest</p>
                             <div id='leader-time' class='force-monospace'></div>
